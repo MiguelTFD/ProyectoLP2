@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+
+
+<body>
+
+<style>
+    .row{
+        align-content: center;
+        justify-content: center;
+    }
+</style>
+
+<div th:replace="fragments :: topbar"></div>
+<div th:replace="fragments :: wsp-chat"></div>
+
+    <!-- Navigation -->
+    <nav th:replace="fragments :: navigation-shop"></nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+                <div class="card mt-4">
+                    <img class="card-img-top img-fluid" th:src="@{http://placehold.it/900x400}" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title" th:text="${producto.nombre}"></h3>
+                        <h4>$<span th:text="${producto.precio}"></span></h4>
+                        <p class="card-text" th:text="${producto.definicion}"> </p>
+                        <p class="card-text" th:text="${producto.stock}"> </p>
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars
+                    </div>
+
+                    <div class="card-footer">
+                        <form action="#" th:action="@{/api/carrito/crear/{id}(id=${producto.id})}" method="post">
+
+                            <button type="submit" class="btn btn-info">Agregar al carrito</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
